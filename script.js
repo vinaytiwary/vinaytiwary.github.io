@@ -86,3 +86,195 @@ document.querySelectorAll(".nav-link").forEach(link => {
     });
 
 });
+
+const projects = {
+
+    vrf: {
+
+        title: "VRF Outdoor Unit Controller",
+
+        image: "assets/images/VRF-ODU.png",
+
+        overview:
+            "Developed production firmware for a commercial VRF Outdoor Unit after reverse engineering the original controller.",
+
+        responsibilities: [
+
+            "Reverse engineered controller",
+
+            "Compressor control",
+
+            "EXV control",
+
+            "Outdoor fan control",
+
+            "Sensor monitoring",
+
+            "Multi Indoor Unit communication"
+
+        ],
+
+        technologies:
+            "Embedded C • MSPM0 • UART • HVAC"
+
+    },
+
+    washing: {
+
+        title: "Smart Washing Machine",
+
+        image: "assets/images/WashingMachine.png",
+
+        overview:
+            "Firmware for automatic load estimation and water filling.",
+
+        responsibilities: [
+
+            "Current sensing",
+
+            "Load estimation",
+
+            "Automatic water filling",
+
+            "Motor control"
+
+        ],
+
+        technologies:
+            "Embedded C • Nuvoton • Automation"
+
+    },
+
+    idu: {
+
+        title:"Air Conditioner Indoor Unit",
+
+        image:"assets/images/AC-IDU.png",
+
+        overview:"Reverse engineered indoor controller and developed complete firmware.",
+
+        responsibilities:[
+
+            "IR protocol",
+
+            "BLDC control",
+
+            "Stepper control",
+
+            "Display control"
+
+        ],
+
+        technologies:"Embedded C • HVAC"
+
+    },
+
+    remote:{
+
+        title:"IR Remote Controller",
+
+        image:"assets/images/IR-Remote.png",
+
+        overview:"Custom IR remote hardware and firmware.",
+
+        responsibilities:[
+
+            "PCB Design",
+
+            "IR Encoding",
+
+            "Firmware"
+
+        ],
+
+        technologies:"Embedded C"
+
+    },
+
+    logger:{
+
+        title:"GPS Data Logger",
+
+        image:"assets/images/DataLogger.png",
+
+        overview:"GPS logger with SD Card and Cloud.",
+
+        responsibilities:[
+
+            "GPS",
+
+            "SD Card",
+
+            "MQTT"
+
+        ],
+
+        technologies:"ESP32"
+
+    },
+
+    fuel:{
+
+        title:"Fuel Management System",
+
+        image:"assets/images/FuelManagement.png",
+
+        overview:"Industrial fuel dispensing controller.",
+
+        responsibilities:[
+
+            "Fuel Monitoring",
+
+            "Industrial Automation"
+
+        ],
+
+        technologies:"STM32"
+
+    }
+
+};
+
+function openProject(id){
+
+    const p=projects[id];
+
+    document.getElementById("modalBody").innerHTML=`
+
+        <h2>${p.title}</h2>
+
+        <img src="${p.image}" style="width:100%;border-radius:12px;margin:20px 0;">
+
+        <p>${p.overview}</p>
+
+        <h3>Responsibilities</h3>
+
+        <ul>
+
+            ${p.responsibilities.map(x=>`<li>${x}</li>`).join("")}
+
+        </ul>
+
+        <h3>Technologies</h3>
+
+        <p>${p.technologies}</p>
+
+    `;
+
+    document.getElementById("projectModal").style.display="block";
+
+}
+
+document.querySelector(".close-btn").onclick=function(){
+
+    document.getElementById("projectModal").style.display="none";
+
+};
+
+window.onclick=function(e){
+
+    if(e.target.id==="projectModal")
+
+        document.getElementById("projectModal").style.display="none";
+
+};
